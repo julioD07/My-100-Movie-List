@@ -1,6 +1,10 @@
 import express from "express";
 import cors from 'cors'
 import router from "../routers/router.js";
+import morgan from "morgan";
+
+import { morganLog } from "../middlewares/morgan-log.js";
+import { dbConnection } from "../database/config.js";
 
 class Server {
 
@@ -12,11 +16,18 @@ class Server {
         // ! Definimos los string rutas
         this.authPath = '/api'
 
+        // ! Conectar a base de datos
+        this.conectarDB()
+
         // ! Middlewares
         this.midleware()
 
         // ! Rutas de mi aplicacion
         this.routes()
+    }
+
+    async conectarDB() {
+        await dbConnection()
     }
 
     midleware() {
@@ -28,6 +39,11 @@ class Server {
 
         // ! Directorio publico
         this.app.use(express.static('public'))
+
+        // ! Invocamos morgan junto con un log
+        const { loggerFormat, accessLogStream } = morganLog()
+        this.app.use(morgan(loggerFormat, { stream: accessLogStream }));
+        this.app.use(morgan(loggerFormat)); // Esto es para que se muestre por consola)
     }
 
     routes() {
