@@ -18,3 +18,38 @@ enriquecer mutuamente su lista de películas.
 2. Instala las dependencias usando `npm install`.
 3. Configura las variables de entorno, como la conexión a la base de datos y la clave secreta JWT.
 4. Ejecuta `npm start` para iniciar el servidor.
+
+## Endpoints API My 100 Movie List
+
+### Crear un nuevo usuario
+
+- **Descripción**: Crea un nuevo usuario en la base de datos.
+- **URL**: `/api/usuario/registrar`
+- **Método**: POST
+- **Cuerpo de la solicitud**:
+```json
+  {
+    "username": "ejemploUsuario",
+    "corre": "correo@example.com",
+    "password": "contraseña",
+    "nombre": "examplename"
+  }
+```
+#### Respuesta Exitosa (Código: 201)
+- **Código**: 201 (Creado).
+- **Cuerpo de la Respuesta**:
+```json
+{
+  "ok": true,
+  "msg": "Usuario Registrado Correctamente",
+  "usuario": {
+    "username": "ejemploUsuario",
+    "nombre": "examplename",
+    "correo": "correo@example.com",
+    "estado": true,
+    "peliculas": [],
+    "fechaCreacion": "2023-08-26T23:02:35.024Z",
+    "uid": "64ea848bbcddf43d69c30db1"
+  }
+}
+```

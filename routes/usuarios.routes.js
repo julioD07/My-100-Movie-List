@@ -1,10 +1,10 @@
-import express from 'express';
+import { Router } from 'express';
 import { check } from 'express-validator';
 import { validarCampos } from '../middlewares/validarCampos.js';
 import { existeEmail, existeUsername } from '../helpers/db-validators.js';
 import { registrarUsuariosController } from '../controllers/usuarios.controller.js'
 
-const router = express.Router();
+const router = Router();
 
 // router.get('/', (req, res) => {
 //     res.json({ ok: true, mensaje: 'Hola Mundo' });
@@ -21,4 +21,5 @@ router.post('/registrar', [
     validarCampos
 ], registrarUsuariosController)
 
-export default router;
+// export default router;
+export const usuariosRoutes = router

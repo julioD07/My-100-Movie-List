@@ -45,8 +45,9 @@ export const registrarUsuariosController = async (req = request, res = response)
     //Guardar en la BD
     await usuario.save()
 
-    res.json({
+    res.status(201).json({
         ok: true, 
-        msg: "Usuario Registrado Correctamente"
+        msg: "Usuario Registrado Correctamente",
+        usuario
     })
 }
