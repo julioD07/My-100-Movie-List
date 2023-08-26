@@ -30,7 +30,7 @@ enriquecer mutuamente su lista de películas.
 ```json
   {
     "username": "ejemploUsuario",
-    "corre": "correo@example.com",
+    "correo": "correo@example.com",
     "password": "contraseña",
     "nombre": "examplename"
   }
@@ -51,5 +51,37 @@ enriquecer mutuamente su lista de películas.
     "fechaCreacion": "2023-08-26T23:02:35.024Z",
     "uid": "64ea848bbcddf43d69c30db1"
   }
+}
+```
+
+### Iniciar Sesion
+- **Descripción**: Inicia sesion en el servicio.
+- **URL**: `/api/auth/login`
+- **Método**: POST
+- **Cuerpo de la solicitud**:
+```json
+  {
+    "username": "ejemploUsuario",
+    "password": "contraseña",
+  }
+```
+
+#### Respuesta Exitosa (Código: 200)
+- **Código**: 201 (Ok).
+- **Cuerpo de la Respuesta**:
+```json
+{
+  "ok": true,
+  "msg": "Login OK",
+  "usuario": {
+    "username": "ejemploUsuario",
+    "nombre": "examplename",
+    "correo": "correo@example.com",
+    "estado": true,
+    "peliculas": [],
+    "fechaCreacion": "2023-08-26T23:02:35.024Z",
+    "uid": "64ea848bbcddf43d69c30db1"
+  },
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NGVhN2ExYWExN2FiOWNkZTU3ZjFkZmEiLCJpYXQiOjE2OTMwOTM2MzksImV4cCI6MTY5MzEwODAzOX0.R3wUDuGNKEu5DyDb48w3ijczo5v1wKxaK2OHfhI8J2I"
 }
 ```
