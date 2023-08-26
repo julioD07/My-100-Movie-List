@@ -5,7 +5,7 @@ import moment from 'moment-timezone';
 
 export const morganLog = () => {
     // ! Definimos el PATH de la ruta del log
-    const logFilePath = path.join(process.cwd(), 'access.log');
+    const logFilePath = path.join(process.cwd(), 'logs/access.log');
     // * Creamos un stream para escribir en nuestro archivo
     const accessLogStream = createWriteStream(logFilePath, { flags: 'a' });
     // ? Definimos el formato del router
