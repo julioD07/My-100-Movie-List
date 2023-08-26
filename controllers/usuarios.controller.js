@@ -1,5 +1,6 @@
 import { request, response } from "express"
 import Usuario from "../models/usuario.js"
+import { encriptarContraseña } from "../helpers/hashPaswords.js"
 
 
 export const usuariosGet = async (req = request, res = response) => {
@@ -23,5 +24,29 @@ export const usuariosGet = async (req = request, res = response) => {
         msg: "Todos los usuarios listados correctamente",
         total,
         usuarios
+    })
+}
+
+
+
+export const registrarUsuariosController = async (req = request, res = response) => {
+
+    const { username, nombre, correo, password } = req.body
+    const usuario = new Usuario({
+        username,
+        password,
+        nombre, 
+        correo, 
+    });
+    
+    // Encriptar la contraseña
+    usuario.password = await encriptarContraseña(password)
+
+    //Guardar en la BD
+    await usuario.save()
+
+    res.json({
+        ok: true, 
+        msg: "Usuario Registrado Correctamente"
     })
 }

@@ -1,9 +1,8 @@
 import express from 'express';
+import usuariosRoutes from '../routes/usuarios.routes.js'
 
-const router = express.Router();
+const router = express();
 
-router.get('/', (req, res) => {
-    res.json({ ok: true, mensaje: 'Hola Mundo' });
-});
+router.use('/usuario', usuariosRoutes);
 
-export default router;
+export default router; 

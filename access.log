@@ -15,3 +15,8 @@
 [25/08/2023 16:08:55] GET /apis 404 1.120 ms - 143
 [25/08/2023 16:09:17] GET /apis 404 1.228 ms - 143
 [25/08/2023 16:09:18] GET /apis 404 0.241 ms - 143
+[26/08/2023 17:16:23] POST / 404 1.061 ms - 140
+[26/08/2023 17:16:55] POST /api/usuario/registrar 404 73.130 ms - 161
+[26/08/2023 17:18:02] POST /api/usuario/registrar 200 242.549 ms - 52
+[26/08/2023 17:24:27] POST /api/usuario/registrar 400 70.962 ms - 195
+[26/08/2023 17:31:06] POST /api/usuario/registrar 400 149.460 ms - 330
