@@ -1,9 +1,9 @@
 import {Schema, model} from 'mongoose';
 
 const PeliculaSchema = Schema({
-    nombre: {
+    titulo: {
         type: String,
-        required: [true, 'El nombre es obligatorio']
+        required: [true, 'El titulo es obligatorio']
     },
     ano_lanzamiento: {
         type: Number,
@@ -11,6 +11,7 @@ const PeliculaSchema = Schema({
     },
     Url_imagen: {
         type: String,
+        default: ''
     },
 });
 

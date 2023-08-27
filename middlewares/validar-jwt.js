@@ -35,6 +35,8 @@ export const validarJWT = async (req = request, res = response, next) => {
         }
 
         // TODO enviar usuario autenticado
+        // usuario.password = null
+        usuario.uid = uid
         req.usuarioAutenticado = usuario
 
         next()
