@@ -29,25 +29,45 @@ export const usuariosGet = async (req = request, res = response) => {
 
 
 
-export const registrarUsuariosController = async (req = request, res = response) => {
+    export const registrarUsuariosController = async (req = request, res = response) => {
 
-    const { username, nombre, correo, password } = req.body
-    const usuario = new Usuario({
-        username,
-        password,
-        nombre, 
-        correo, 
-    });
-    
-    // Encriptar la contraseña
-    usuario.password = await encriptarContraseña(password)
+        try {
+            const { username, nombre, correo, password } = req.body
 
-    //Guardar en la BD
-    await usuario.save()
+            // ! Crear una lista de peliculas vacia para el usuario
+            const listasPeliculas = {
+                nombre: `Lista de peliculas de ${username}`,
+                peliculas: [],
+            }
 
-    res.status(201).json({
-        ok: true, 
-        msg: "Usuario Registrado Correctamente",
-        usuario
-    })
-}
+            const usuario = new Usuario({
+                username,
+                password,
+                nombre, 
+                correo, 
+                listasPeliculas
+            });
+            
+            // Encriptar la contraseña  
+            usuario.password = await encriptarContraseña(password)
+
+            //Guardar en la BD
+            await usuario.save()
+
+            res.status(201).json({
+                ok: true, 
+                msg: "Usuario Registrado Correctamente",
+                usuario
+            })
+
+        } catch (error) {
+            console.log(error.message)
+            return res.status(500).json({
+                ok: false,
+                msg: "Hable con el administrador",
+                error_message: error.message
+            })
+        }
+
+        
+    }

@@ -67,12 +67,12 @@ enriquecer mutuamente su lista de películas.
 ```
 
 #### Respuesta Exitosa (Código: 200)
-- **Código**: 201 (Ok).
+- **Código**: 200 (Ok).
 - **Cuerpo de la Respuesta**:
 ```json
 {
   "ok": true,
-  "msg": "Login OK",
+  "msg": "Usuario logueado correctamente",
   "usuario": {
     "username": "ejemploUsuario",
     "nombre": "examplename",

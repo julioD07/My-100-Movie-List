@@ -5,16 +5,16 @@ import { generarJWT } from '../helpers/jwt.js';
 
 export const authLoginController = async (req = request, res = response) => {
 
-    const {username, password} = req.body
+    const {correo, password} = req.body
 
     try {
 
         // TODO Verificar si el email existe
-        const usuario = await Usuario.findOne({username})
+        const usuario = await Usuario.findOne({correo})
         if (!usuario) {
             return  res.status(400).json({
                 ok: false,
-                msg: "Usuario / password no son correctos"
+                msg: "correo / password no son correctos"
             })
         }
 
@@ -22,7 +22,7 @@ export const authLoginController = async (req = request, res = response) => {
         if (!usuario.estado) {
             return  res.status(400).json({
                 ok: false,
-                msg: "Usuario / password no son correctos - estado: false"
+                msg: "El usuario no se encuentra activo en la plataforma, favor contactar al administrador"
             })
         }
 
@@ -31,7 +31,7 @@ export const authLoginController = async (req = request, res = response) => {
         if (!validpassword) {
             return  res.status(400).json({
                 ok: false,
-                msg: "Usuario / password no son correctos - password"
+                msg: "Contraseña incorrecta"
             })
         }
 
@@ -40,7 +40,7 @@ export const authLoginController = async (req = request, res = response) => {
 
         res.json({
             ok: true,
-            msg: "Login OK",
+            msg: "Usuario logueado correctamente",
             usuario,
             token
         })

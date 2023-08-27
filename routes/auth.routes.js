@@ -6,7 +6,7 @@ import { authLoginController } from '../controllers/auth.controller.js';
 const router = Router();
 
 router.post('/login', [
-    check('username', 'El username es obligatorio').not().isEmpty(),
+    check('correo', 'El correo es obligatorio').not().isEmpty(),
     check('password', 'El passoword es obligatorio').not().isEmpty(),
     validarCampos
 ],authLoginController )

@@ -1,6 +1,7 @@
-import mongoose, { model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
+import { ListaPeliculaSchema } from './listapeliculas.js';
 
-const UsuarioSchema = mongoose.Schema({
+const UsuarioSchema = Schema({
     username: {
         type:String ,
         required: [true, 'El username es obligatorio'],
@@ -35,10 +36,7 @@ const UsuarioSchema = mongoose.Schema({
     calificacion: {
         type: Number,
     },
-    peliculas: {
-        type: Array,
-        default: []
-    }
+    listasPeliculas: ListaPeliculaSchema // Lista de listas de películas
 });
 
 UsuarioSchema.methods.toJSON = function () {
