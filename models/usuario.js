@@ -33,6 +33,12 @@ const UsuarioSchema = Schema(
     calificacion: {
       type: Number,
     },
+    calificaciones: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Calificacion",
+      },
+    ],
     // listasPeliculas: ListaPeliculaSchema, // Lista de listas de películas
   },
   {
