@@ -58,6 +58,11 @@ class Server {
             console.log(`Corriendo en el http://localhost:${this.port}/`)
         })
     }
+
+    obtenerApp() {
+        const app = this.app
+        return app
+    }
 }
 
 export default Server

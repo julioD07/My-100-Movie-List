@@ -36,7 +36,7 @@ export const crearPeliculaController = async (
      { new: true }
    );
 
-    res.json({ ok: true, msg: "Pelicula creada correctamente", peliculas });
+    res.status(201).json({ ok: true, msg: "Pelicula creada correctamente", peliculas, idPeliculaCreada: peliculaId });
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({
